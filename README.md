@@ -1,7 +1,7 @@
 # IS2545 - Deliverable5
 ### Yichao Chen (yic85), Jingyi Lin (jil173)
 
-We use OWSAP ZAP as a security scanner.
+We use OWASP ZAP as the security scanner in this security testing.
 
 ##Vulnerability 1: Cross Site Scripting  
 This attack happens when other users are viewing webpages injected by attacker’s script on the client-side. The attacker can get access to the controls of the website.
