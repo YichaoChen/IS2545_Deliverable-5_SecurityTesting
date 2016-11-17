@@ -3,7 +3,7 @@
 
 We use OWSAP ZAP as a security scanner.
 
-###Vulnerability 1: Cross Site Scripting
+###Vulnerability 1: Cross Site Scripting  
 This attack happens when other users are viewing webpages injected by attacker’s script on the client-side. The attacker can get access to the controls of the website.
 
 ####*Question Answers:*
@@ -33,7 +33,7 @@ Since the vulnerability can be exploit as modification and fabrication, the atta
 If the attacker only view some authorized information but do not generate any modifications, this attack exploit vulnerability passive.  
 
 **4. What business value would be lost due to exploiting this vulnerability (data loss, unauthorized access, denial of service, etc)?**  
-* Data loss, unauthorized access, denial of service.  
+* Data loss, unauthorized access, denial of service  
 Since the attacker can inject his code into webpages, he can easily modify or manipulate the data in the website, which will cause data loss. By intercept other user’s information, the XSS can let the attacker get unauthorized access to some part of the website. The injected code may also lead other users to a fake malicious webpage thus the website’s normal function will be interrupt.  
 
 **5. What steps should the development team take to fix this vulnerability?**  
@@ -57,19 +57,59 @@ Since the attacker can inject his code into webpages, he can easily modify or ma
 3) After the target active this code, the code will take him to a fake site, which will trick the user to input his important credential.  
 
 **3. A screenshot (if applicable) of the vulnerability.**  
-
+  
+The screenshot shows an alter window caused by this vulnerability. In this alert, it says here is an embedded page on this webpage, and it provides a number 1.
 ![screenshot](Screenshots/CrossSiteScripting.png)  
   
   
 ###Vulnerability 2: SQL Injection  
+The login credential validation process can be easily manipulated by malicious input. In order to pass the validation, attackers can type [ZAP' OR '1'='1' -- ] as password. Since it is a Boolean condition judge, when it returns true (it must be true here), the attacker can login to the system successfully.  
 
+####*Question Answers:*  
 
+**1. What part of the InfoSec Triad does in this vulnerability attack (confidentiality, integrity, or availability)?**  
+* Confidentiality  
+Since the attacker can login the website, he can easily read the data or information in it without authorization.  
 
+**2. What kind of security attack can exploit this vulnerability (interruption, interception, modification, or fabrication)?**  
+* Interception  
+The attacker can use this vulnerability to get information behind the system, which seriously threaten the confidentiality of the website.  
 
+**3. Are attacks that exploit this vulnerability active or passive?**  
+* Passive  
+Since the attacker just pass the validation and can look at the information behind, he has not done any modifications. Maybe he will do some modifications in the future, however by this attack he did not do it.  
 
+**4. What business value would be lost due to exploiting this vulnerability (data loss, unauthorized access, denial of service, etc)?**　
+* Data loss, unauthorized access, confidential information disclosure  
+The attacker can access the website’s data and its users account information by exploiting this vulnerability. With the unauthorized access, the data loss and the confidential information disclosure will be two serious consequences.  
 
-
-
-   
-   
+**5. What steps should the development team take to fix this vulnerability?**  
+  
+  1) Terminate the user’s account activity and send confidential notification to inform the user.  
+  2) Review the website’s source code.  
+  3) Move all validation process from client side to the server side, do not use client side’s input validation.  
+  4) Modify the code and avoid create dynamic SQL queries using simple string concatenation.  
+  5) Apply a 'whitelist' of allowed characters, or a 'blacklist' of disallowed characters in user input.  
+    
+####*Additional Information:*  
+  
+**1. The URL of the website with the described vulnerability.**  
+  
+  http://demo.testfire.net/bank/login.aspx  
+  
+**2. Steps taken to exploit the vulnerability.**  
+  
+  1) Go to the login page: http://demo.testfire.net/bank/login.aspx  
+  2) Type in any username in the username textbox, e.g. test.  
+  3) Type in [ZAP' OR '1'='1' — ] as the password in the password textbox.  
+  4) Click “Login” button.  
+  5) Successfully login and can read personal account information.  
+    
+**3. A screenshot (if applicable) of the vulnerability.**  
+  
+  The first screenshot shows the login page with the fake input.  
+  ![screenshot](Screenshots/SQL Injection - before.png)  
+    
+  The second screenshot shows the successfully login page after the input of the fake password.  
+  ![screenshot](Screenshots/SQL Injection - after.png) 
    
