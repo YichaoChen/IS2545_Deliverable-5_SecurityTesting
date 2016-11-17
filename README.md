@@ -59,7 +59,7 @@ Since the attacker can inject his code into webpages, he can easily modify or ma
 **3. A screenshot (if applicable) of the vulnerability.**  
   
 The screenshot shows an alter window caused by this vulnerability. In this alert, it says here is an embedded page on this webpage, and it provides a number 1.
-![screenshot](Screenshots/CrossSiteScripting.png)  
+![screenshot](Screenshots/Screenshots/CrossSiteScripting.png)  
   
   
 ###Vulnerability 2: SQL Injection  
